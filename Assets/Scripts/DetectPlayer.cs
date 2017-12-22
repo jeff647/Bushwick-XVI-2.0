@@ -8,7 +8,7 @@ public class DetectPlayer : MonoBehaviour {
 	private PatrolScript patrol;
 	void Start () {
 		rotateArm = transform.parent.GetComponentInChildren<RotateArm> ();
-		patrol = GetComponentInParent<PatrolScript> ();
+		patrol = transform.parent.GetComponentInChildren<PatrolScript> ();
 	}
 	
 	// Update is called once per frame
@@ -37,9 +37,10 @@ public class DetectPlayer : MonoBehaviour {
 	void OnTriggerExit2D(Collider2D col){
 		if (col.tag == "Player") {
 			
-			patrol.SetPatrolStatus (true);
-			rotateArm.SetPlayerTarget (null);
+				patrol.SetPatrolStatus (true);
+				rotateArm.SetPlayerTarget (null);
+				Debug.Log ("[DetectPlayer] Enemy direction: " + patrol.GetIsGoingLeft ());
+			}
 
-		}
 	}
 }

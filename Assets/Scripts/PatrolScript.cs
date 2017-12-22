@@ -5,27 +5,32 @@ using UnityEngine;
 public class PatrolScript : MonoBehaviour {
 	[SerializeField]
 	private float speed;
-	private bool isGoingLeft = true;
 	[SerializeField]
+	private bool stayStill = false;
+	private bool isGoingLeft = true;
+	private GameObject topParent;
 	private bool isPatrolling = true;
-	private bool isAttacking = false;
 	private float yRotation = 180;
 
 	void Start () {
-		
+		topParent = transform.parent.gameObject;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (isGoingLeft && isPatrolling) {
+		if (stayStill == false) {
+			if (isGoingLeft && isPatrolling) {
+				topParent.transform.position += Vector3.left * (speed * Time.deltaTime);
+			} else if (!isGoingLeft && isPatrolling) {
 			
-			this.transform.position += Vector3.left * (speed * Time.deltaTime);
-		} else if (!isGoingLeft && isPatrolling) {
-			
-			this.transform.position += Vector3.right * (speed * Time.deltaTime);
-		} 
+				topParent.transform.position += Vector3.right * (speed * Time.deltaTime);
+			} 
+		}
 
 
+	}
+	public bool GetStayStill(){
+		return stayStill;
 	}
 	public float GetYRotation(){
 		return yRotation;
@@ -35,24 +40,20 @@ public class PatrolScript : MonoBehaviour {
 	}
 
 	public void SetPatrolStatus(bool patrol){
+		
 		this.isPatrolling = patrol;
-	}
-	public void SetAttackStatus(bool attack){
-		this.isAttacking = attack;
 	}
 
 	void OnTriggerExit2D(Collider2D col){
-		//if (col.tag == "PatrolArea") {
-			//Debug.Log ("collider hit");
-
-			transform.Rotate (new Vector3 (0, yRotation * -1, 0));
-			isGoingLeft = !isGoingLeft;
-			Debug.Log ("collider hit: " + isGoingLeft);
-
-				
-
-
+		//if (col.tag != "Bullet" ) {
+			
+			if (!stayStill) {
+				topParent.transform.Rotate (new Vector3 (0, yRotation * -1, 0));
+				isGoingLeft = !isGoingLeft;
+			}
+			Debug.Log ("[PatrolScript] collider hit: " + isGoingLeft);
 
 		//}
+	
 	}
 }

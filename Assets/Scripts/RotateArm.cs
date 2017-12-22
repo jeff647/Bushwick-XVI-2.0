@@ -39,6 +39,7 @@ public class RotateArm : MonoBehaviour {
 	}
 
 	public void SetPlayerTarget(GameObject obj){
+		//Debug.Log (obj);
 		this.playerObject = obj;
 	}
 }

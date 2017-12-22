@@ -7,6 +7,7 @@ TagManager:
   - PatrolArea
   - Enemy
   - Kill Line
+  - Bullet
   layers:
   - Default
   - TransparentFX
