@@ -9,23 +9,24 @@ public class ProjectileShoot : MonoBehaviour {
     [SerializeField]
     private float projectileForce = 750f;
 
-    private Animator _animator = null;
+    private Animator animator = null;
 
     public Transform firepoint;
 
-	private Transform _transform;
+	private Transform transform;
+
     public Camera cam;
 	// Use this for initialization
 	void Start () {
-        _animator = gameObject.GetComponent<Animator>();
-		_transform = gameObject.transform;
+        animator = gameObject.GetComponent<Animator>();
+		transform = gameObject.transform;
 	}
 
 	// Update is called once per frame
 	void Update () {
         if (Input.GetButtonDown("Fire1"))
         {
-            _animator.SetTrigger("fire");
+            animator.SetTrigger("fire");
             FireProjectile();
         }
 	}
@@ -35,7 +36,7 @@ public class ProjectileShoot : MonoBehaviour {
         GameObject p = Instantiate(projectile, firepoint.position, Quaternion.identity);
         Rigidbody2D rb = p.GetComponent<Rigidbody2D>();
 
-        rb.AddForce(firepoint.right * projectileForce * _transform.localScale.x);
+        rb.AddForce(firepoint.right * projectileForce * transform.localScale.x);
         p.transform.localScale = firepoint.localScale;
     }
 }

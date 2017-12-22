@@ -10,9 +10,13 @@ public class BushwickController : MonoBehaviour {
     [SerializeField]
     float fallMultiplier = 2.5f;
 
+	private BushwickController playerControl;
+
+	bool dead = false;
+
     bool facingRight = true;
     private Animator bushwickAnimation;
-    private Rigidbody2D _rigidBody;
+    private Rigidbody2D rigidBody;
 
     bool onGround = false;
     public Transform onGroundCheck;
@@ -22,53 +26,61 @@ public class BushwickController : MonoBehaviour {
     // Use this for initialization
     void Start() {
         bushwickAnimation = GetComponent<Animator>();
-        _rigidBody = gameObject.GetComponent<Rigidbody2D>();
+        rigidBody = gameObject.GetComponent<Rigidbody2D>();
     }
 
     //From https://unity3d.com/learn/tutorials/topics/2d-game-creation/2d-character-controllers and Blackboard content
     void FixedUpdate() {
-		
-        onGround = Physics2D.OverlapCircle(onGroundCheck.position, onGroundRadius, IsGround);
-        bushwickAnimation.SetBool("Ground", onGround);
+		if(!dead){
+	        onGround = Physics2D.OverlapCircle(onGroundCheck.position, onGroundRadius, IsGround);
+	        bushwickAnimation.SetBool("Ground", onGround);
 
-        float userMove = Input.GetAxis("Horizontal");
-        bushwickAnimation.SetFloat("Speed", Mathf.Abs(userMove));
+	        float userMove = Input.GetAxis("Horizontal");
+	        bushwickAnimation.SetFloat("Speed", Mathf.Abs(userMove));
 
-        _rigidBody.velocity = new Vector2(userMove * Speed, _rigidBody.velocity.y);
+	        rigidBody.velocity = new Vector2(userMove * Speed, rigidBody.velocity.y);
 
-        if (_rigidBody.velocity.x > 0)
-        {
-            gameObject.transform.localScale = new Vector3(1, 1, 1);
-        }
-        else if (_rigidBody.velocity.x < 0)
-        {
-            gameObject.transform.localScale = new Vector3(-1, 1, 1);
-        }
-
-    }
+	        if (rigidBody.velocity.x > 0)
+	        {
+	            gameObject.transform.localScale = new Vector3(1, 1, 1);
+	        }
+	        else if (rigidBody.velocity.x < 0)
+	        {
+	            gameObject.transform.localScale = new Vector3(-1, 1, 1);
+	        }
+    	}
+	}
 
     void Update()
-    {
-        
-        if (onGround && Input.GetButtonDown("Jump"))
-        {
-            bushwickAnimation.SetBool("Ground", false);
-            _rigidBody.AddForce(new Vector2(0, jumpForce));
-        }
+	{
+		if (!dead) {    
+			if (onGround && Input.GetButtonDown ("Jump")) {
+				bushwickAnimation.SetBool ("Ground", false);
+				rigidBody.AddForce (new Vector2 (0, jumpForce));
+			}
 
-        //When falling fall down faster From https://www.youtube.com/watch?v=7KiK0Aqtmzc
-        if (!onGround && _rigidBody.velocity.y < 0)
-        {
-            _rigidBody.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
-        }
-    }
+			//When falling fall down faster From https://www.youtube.com/watch?v=7KiK0Aqtmzc
+			if (!onGround && rigidBody.velocity.y < 0) {
+				rigidBody.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+			}
+		}
+	}
     //From https://unity3d.com/learn/tutorials/topics/2d-game-creation/2d-character-controllers and Blackboard content
 
-	void OnTriggerEnter2D(Collider2D col){
+	public void OnTriggerEnter2D(Collider2D col){
+		bushwickAnimation.SetBool ("Ground", true);
 		if (col.tag == "Kill Line") {
-			//DO SHIT
-			Destroy(gameObject);
+			Death ();
+		} else if (col.tag == "nextLevel") {
+			Debug.Log ("Level complete");
 		}
+	}
+
+	public void Death(){
+		dead = true;
+		bushwickAnimation.SetBool ("dead", dead);
+		Debug.Log ("dead animation called");
+		Destroy (gameObject, 0.9f);
 	}
 
 }
