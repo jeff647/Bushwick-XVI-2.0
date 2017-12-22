@@ -9,7 +9,7 @@ public class Bullet : MonoBehaviour {
 	[SerializeField]
 	private float force = 0.05f;
 	[SerializeField]
-	private float damage;
+	int damage = 1;
 
 	void Start () {
 		Destroy (gameObject, 3f);
@@ -20,7 +20,12 @@ public class Bullet : MonoBehaviour {
 		transform.Translate (Vector2.left * force * Time.deltaTime);
 	}
 
-	void OnTriggerEnter2D(Collider2D col){
-
+	void OnCollisionEnter2D(Collision2D col)
+	{
+		if (col.gameObject.tag == "Player") {
+			col.gameObject.GetComponent<PlayerHealth> ().Damage (damage);
+		}
+		Destroy (gameObject);
 	}
+
 }

@@ -5,6 +5,8 @@ using UnityEngine;
 public class ProjectileScript : MonoBehaviour {
 
     private IEnumerator coroutine;
+	[SerializeField]
+	int damage = 1;
 
 	// Use this for initialization
 	void Start () {
@@ -15,6 +17,14 @@ public class ProjectileScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		
+	}
+
+	void OnCollisionEnter2D(Collision2D col)
+	{
+		if (col.gameObject.tag == "Enemy") {
+			col.gameObject.GetComponent<EnemyHealth> ().Damage (damage);
+		}
+		Destroy (gameObject);
 	}
 
     private IEnumerator finish(float time)
