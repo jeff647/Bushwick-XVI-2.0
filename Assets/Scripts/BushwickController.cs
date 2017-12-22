@@ -6,9 +6,9 @@ public class BushwickController : MonoBehaviour {
     [SerializeField]
     float Speed = 5f;
     [SerializeField]
-    float jumpForce = 450f;
+    float jumpForce = 650;
     [SerializeField]
-    float fallMultiplier = 1.8f;
+    float fallMultiplier = 2.5f;
 
     bool facingRight = true;
     private Animator bushwickAnimation;
@@ -27,6 +27,7 @@ public class BushwickController : MonoBehaviour {
 
     //From https://unity3d.com/learn/tutorials/topics/2d-game-creation/2d-character-controllers and Blackboard content
     void FixedUpdate() {
+		
         onGround = Physics2D.OverlapCircle(onGroundCheck.position, onGroundRadius, IsGround);
         bushwickAnimation.SetBool("Ground", onGround);
 
@@ -63,6 +64,11 @@ public class BushwickController : MonoBehaviour {
     }
     //From https://unity3d.com/learn/tutorials/topics/2d-game-creation/2d-character-controllers and Blackboard content
 
-
+	void OnTriggerEnter2D(Collider2D col){
+		if (col.tag == "Kill Line") {
+			//DO SHIT
+			Destroy(gameObject);
+		}
+	}
 
 }

@@ -6,6 +6,7 @@ public class PatrolScript : MonoBehaviour {
 	[SerializeField]
 	private float speed;
 	private bool isGoingLeft = true;
+	[SerializeField]
 	private bool isPatrolling = true;
 	private bool isAttacking = false;
 	private float yRotation = 180;
