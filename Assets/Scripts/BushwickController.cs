@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BushwickController : MonoBehaviour {
     [SerializeField]
-    float Speed = 8f;
+    float Speed = 5f;
     [SerializeField]
     float jumpForce = 450f;
     [SerializeField]
