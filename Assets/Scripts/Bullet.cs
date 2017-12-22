@@ -26,6 +26,11 @@ public class Bullet : MonoBehaviour {
 			col.gameObject.GetComponent<PlayerHealth> ().Damage (damage);
 		}
 		Destroy (gameObject);
+		Debug.Log ("Object should be dead");
+	}
+
+	void OnTriggerEnter2D(Collider2D col){
+		
 	}
 
 }
