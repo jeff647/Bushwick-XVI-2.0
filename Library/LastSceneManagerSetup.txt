@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Bushwick.unity
+- path: Assets/TestScene.unity
   isLoaded: 1
   isActive: 1

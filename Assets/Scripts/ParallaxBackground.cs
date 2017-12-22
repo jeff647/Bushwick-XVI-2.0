@@ -42,13 +42,13 @@ public class ParallaxBackground : MonoBehaviour {
 		//the screens will treadmill to the right.
 		if (cameraTransform.position.x > (layers [rightIndex].transform.position.x - viewBuffer))
 			ScrollRight ();
-		Debug.Log ("[" + leftIndex + ", " + rightIndex + "]");
+		
 	}
 
 	private void ScrollLeft(){
 		//calculates coordinates past the left most background Index position [leftIndex, 0, rightIndex].
 		layers [rightIndex].position = Vector3.right * (layers [leftIndex].position.x - backgroundSize);
-		//rotate tracked indexes (leftIndex/rightIndex). [2,1] -> [1,0] -> [0,2] -> [2,1]
+		//rotate tracked indexes (leftIndex/rightIndex). [0,2] -> [2,1] -> [1,0] -> [0,2] 
 		leftIndex = rightIndex;
 		rightIndex--;
 		if (rightIndex < 0)
