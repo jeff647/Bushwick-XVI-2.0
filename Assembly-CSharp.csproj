@@ -61,6 +61,7 @@
      <Compile Include="Assets\Scripts\ProjectileShoot.cs" />
      <Compile Include="Assets\Scripts\RotateArm.cs" />
      <Compile Include="Assets\Scripts\StartGame.cs" />
+     <Compile Include="Assets\Scripts\UIController.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bushwick-XVI", "Assembly-CSharp.csproj", "{AE9F36AD-9BA6-CC72-92A3-74A1F64F790A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bushwick-XVI", "Assembly-CSharp-Editor.csproj", "{7371C0CE-DA1A-E2A8-99C6-0413B5C626E2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,10 @@ Global
 		{AE9F36AD-9BA6-CC72-92A3-74A1F64F790A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AE9F36AD-9BA6-CC72-92A3-74A1F64F790A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AE9F36AD-9BA6-CC72-92A3-74A1F64F790A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7371C0CE-DA1A-E2A8-99C6-0413B5C626E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7371C0CE-DA1A-E2A8-99C6-0413B5C626E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7371C0CE-DA1A-E2A8-99C6-0413B5C626E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7371C0CE-DA1A-E2A8-99C6-0413B5C626E2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
