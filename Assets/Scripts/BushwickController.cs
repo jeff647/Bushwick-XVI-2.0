@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BushwickController : MonoBehaviour {
     [SerializeField]
@@ -81,7 +82,11 @@ public class BushwickController : MonoBehaviour {
 		dead = true;
 		bushwickAnimation.SetBool ("dead", dead);
 		Debug.Log ("dead animation called");
-		Destroy (gameObject, 0.9f);
+		//Destroy (gameObject, 0.9f);
+		Invoke( "ChangeScene", 0.9f );
+	}
+	private void ChangeScene(){
+		SceneManager.LoadScene ("MainMenu");
 	}
 
 }
