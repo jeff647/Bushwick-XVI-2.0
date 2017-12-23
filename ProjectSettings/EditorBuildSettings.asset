@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/MainMenu.unity
     guid: 3a894f1ed666e7e4b84178570b3e7d65
   - enabled: 0
-    path: Assets/Bushwick.unity
+    path: 
     guid: 92af82b5945430543845d19eedaadec4
   - enabled: 1
     path: Assets/TestScene.unity
