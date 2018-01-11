@@ -10,6 +10,8 @@ public class BushwickController : MonoBehaviour {
     float jumpForce = 650;
     [SerializeField]
     float fallMultiplier = 2.5f;
+	[SerializeField]
+	private GameObject grenade;
 
 	private BushwickController playerControl;
 
@@ -54,7 +56,16 @@ public class BushwickController : MonoBehaviour {
 
     void Update()
 	{
-		if (!dead) {    
+		if (!dead) { 
+			if (Input.GetKeyDown(KeyCode.F)) {
+				
+				Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+				difference.Normalize ();
+				float rotation_z = Mathf.Atan2 (difference.y, difference.x) * Mathf.Rad2Deg;
+
+				GameObject p = Instantiate(grenade, this.transform.position, Quaternion.Euler (0f, 0f, rotation_z + -90f));
+				p.GetComponent<Rigidbody2D> ().AddForce (p.transform.up * 1200f);
+			}
 			if (onGround && Input.GetButtonDown ("Jump")) {
 				bushwickAnimation.SetBool ("Ground", false);
 				rigidBody.AddForce (new Vector2 (0, jumpForce));
