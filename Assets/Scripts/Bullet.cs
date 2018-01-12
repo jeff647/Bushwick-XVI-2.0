@@ -25,12 +25,24 @@ public class Bullet : MonoBehaviour {
 		if (col.gameObject.tag == "Player") {
 			col.gameObject.GetComponent<PlayerHealth> ().Damage (damage);
 		}
-		Destroy (gameObject);
-		Debug.Log ("Object should be dead");
+		if (col.gameObject.tag == "Ignore") {
+			StartCoroutine (FlickerTrigger());
+		} else {
+			Destroy (gameObject);
+		}
+
+
 	}
 
 	void OnTriggerEnter2D(Collider2D col){
 		
+	}
+	private IEnumerator FlickerTrigger(){
+		CircleCollider2D col = this.GetComponent<CircleCollider2D> ();
+		col.isTrigger = true;
+		yield return new WaitForSeconds (0.02f);
+		col.isTrigger = false;
+		yield break;
 	}
 
 }

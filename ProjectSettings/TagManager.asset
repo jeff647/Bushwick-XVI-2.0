@@ -5,6 +5,13 @@ TagManager:
   serializedVersion: 2
   tags:
   - Kill Line
+  - Enemy
+  - PatrolArea
+  - Bullet
+  - Ignore
+  - nextLevel
+  - GrenadeItem
+  - HealthItem
   layers:
   - Default
   - TransparentFX

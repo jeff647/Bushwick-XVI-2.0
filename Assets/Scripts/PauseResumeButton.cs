@@ -15,6 +15,7 @@ public class PauseResumeButton : MonoBehaviour {
 		}
 	}
 	public void ExitToMenu(){
+		Time.timeScale = 1;
 		SceneManager.LoadScene ("MainMenu");
 	}
 }

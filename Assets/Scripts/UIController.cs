@@ -17,7 +17,7 @@ public class UIController : MonoBehaviour {
 	private PlayerHealth health;
 
 	void Start(){
-		//player = GameObject.Find ("Character");
+		player = GameObject.Find ("Character");
 		//content = GetComponent<Image>();
 		health = player.GetComponent<PlayerHealth>();
 		_maxHealthVal = health.GetMaxHealth ();

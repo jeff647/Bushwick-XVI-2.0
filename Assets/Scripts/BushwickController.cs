@@ -12,6 +12,9 @@ public class BushwickController : MonoBehaviour {
     float fallMultiplier = 2.5f;
 	[SerializeField]
 	private GameObject grenade;
+	[SerializeField]
+	private float grenadeCount = 1f ;
+
 
 	private BushwickController playerControl;
 
@@ -25,7 +28,9 @@ public class BushwickController : MonoBehaviour {
     public Transform onGroundCheck;
     float onGroundRadius = 0.2f;
     public LayerMask IsGround;
-
+	public float getGrenade(){
+		return grenadeCount;
+	}
     // Use this for initialization
     void Start() {
         bushwickAnimation = GetComponent<Animator>();
@@ -57,7 +62,7 @@ public class BushwickController : MonoBehaviour {
     void Update()
 	{
 		if (!dead) { 
-			if (Input.GetKeyDown(KeyCode.F)) {
+			if (Input.GetKeyDown(KeyCode.F) && this.grenadeCount > 0f) {
 				
 				Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
 				difference.Normalize ();
@@ -65,6 +70,7 @@ public class BushwickController : MonoBehaviour {
 
 				GameObject p = Instantiate(grenade, this.transform.position, Quaternion.Euler (0f, 0f, rotation_z + -90f));
 				p.GetComponent<Rigidbody2D> ().AddForce (p.transform.up * 1200f);
+				grenadeCount--;
 			}
 			if (onGround && Input.GetButtonDown ("Jump")) {
 				bushwickAnimation.SetBool ("Ground", false);
@@ -87,6 +93,18 @@ public class BushwickController : MonoBehaviour {
 		} else if (col.tag == "nextLevel") {
 			Debug.Log ("Level complete");
 		}
+		if (col.tag == "GrenadeItem") {
+			grenadeCount += 3f;
+			Destroy (col.gameObject);
+		}
+	}
+	void OnCollisionEnter2D(Collision2D col){
+		if (col.gameObject.tag == "HealthItem") {
+			PlayerHealth player = this.transform.GetComponent<PlayerHealth> ();
+			player.AddHealth (1f);
+			Destroy (col.gameObject);
+		}
+
 	}
 
 	public void Death(){

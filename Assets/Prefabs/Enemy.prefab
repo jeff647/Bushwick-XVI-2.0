@@ -278,6 +278,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 2
+  dropItem: {fileID: 1947414844426106, guid: b67a0d18900f751448b66430fb04647c, type: 2}
 --- !u!114 &114704631534759146
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -357,8 +358,6 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!212 &212492700599945400
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -399,8 +398,6 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!212 &212716123666200860
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -441,8 +438,6 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
-  m_MaskInteraction: 0
 --- !u!212 &212719348271553622
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -483,8 +478,6 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
 --- !u!212 &212885237769203114
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -525,5 +518,3 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
