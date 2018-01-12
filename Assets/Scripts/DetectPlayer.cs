@@ -39,7 +39,7 @@ public class DetectPlayer : MonoBehaviour {
 			
 				patrol.SetPatrolStatus (true);
 				rotateArm.SetPlayerTarget (null);
-				Debug.Log ("[DetectPlayer] Enemy direction: " + patrol.GetIsGoingLeft ());
+				
 			}
 
 	}

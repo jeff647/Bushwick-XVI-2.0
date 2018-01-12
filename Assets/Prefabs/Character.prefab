@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 114801062738441888}
   - component: {fileID: 70198556019030712}
   - component: {fileID: 114696031463689610}
-  - component: {fileID: 114690283709721470}
+  - component: {fileID: 114621606096292528}
   m_Layer: 8
   m_Name: Character
   m_TagString: Player
@@ -156,7 +156,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114690283709721470
+--- !u!114 &114621606096292528
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -167,8 +167,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bfc77efd7235234ab690002d458fd4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 8
-  maxHealth: 8
+  health: 5
+  maxHealth: 5
+  lives: 3
+  RespawnPoint: {fileID: 0}
 --- !u!114 &114696031463689610
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -213,7 +215,6 @@ SpriteRenderer:
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -229,7 +230,6 @@ SpriteRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 0
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5

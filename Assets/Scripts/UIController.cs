@@ -29,7 +29,7 @@ public class UIController : MonoBehaviour {
 
 	void Update(){
 		_healthValue = health.GetHealth ();
-		Debug.Log (_healthValue / _maxHealthVal);
+		
 		content.fillAmount = _healthValue / _maxHealthVal;
 	}
 }

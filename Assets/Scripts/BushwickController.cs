@@ -15,6 +15,7 @@ public class BushwickController : MonoBehaviour {
 	[SerializeField]
 	private float grenadeCount = 1f ;
 	private AudioManager audio;
+    private static GameObject player;
 
 	private BushwickController playerControl;
 
@@ -32,7 +33,9 @@ public class BushwickController : MonoBehaviour {
 		return grenadeCount;
 	}
     // Use this for initialization
+    
     void Start() {
+        
 		audio = GameObject.Find ("_AudioManager").GetComponent<AudioManager> ();
         bushwickAnimation = GetComponent<Animator>();
         rigidBody = gameObject.GetComponent<Rigidbody2D>();
@@ -89,10 +92,12 @@ public class BushwickController : MonoBehaviour {
 	public void OnTriggerEnter2D(Collider2D col){
 		bushwickAnimation.SetBool ("Ground", true);
 		if (col.tag == "Kill Line") {
+            PlayerHealth h = this.transform.GetComponent<PlayerHealth>();
+            h.Damage(5);
 
-			Death ();
+			
 		} else if (col.tag == "nextLevel") {
-			Debug.Log ("Level complete");
+			
 		}
 		if (col.tag == "GrenadeItem") {
 			grenadeCount += 3f;
@@ -113,7 +118,7 @@ public class BushwickController : MonoBehaviour {
 		bushwickAnimation.SetBool ("dead", dead);
 		Debug.Log ("dead animation called");
 		//Destroy (gameObject, 0.9f);
-		Invoke( "ChangeScene", 0.9f );
+		//Invoke( "ChangeScene", 0.9f );
 	}
 	private void ChangeScene(){
 		SceneManager.LoadScene ("MainMenu");

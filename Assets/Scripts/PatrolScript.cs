@@ -51,7 +51,7 @@ public class PatrolScript : MonoBehaviour {
 				topParent.transform.Rotate (new Vector3 (0, yRotation * -1, 0));
 				isGoingLeft = !isGoingLeft;
 			}
-			Debug.Log ("[PatrolScript] collider hit: " + isGoingLeft);
+			
 
 		//}
 	
