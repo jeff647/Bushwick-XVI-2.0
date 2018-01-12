@@ -14,7 +14,7 @@ public class BushwickController : MonoBehaviour {
 	private GameObject grenade;
 	[SerializeField]
 	private float grenadeCount = 1f ;
-
+	private AudioManager audio;
 
 	private BushwickController playerControl;
 
@@ -33,6 +33,7 @@ public class BushwickController : MonoBehaviour {
 	}
     // Use this for initialization
     void Start() {
+		audio = GameObject.Find ("_AudioManager").GetComponent<AudioManager> ();
         bushwickAnimation = GetComponent<Animator>();
         rigidBody = gameObject.GetComponent<Rigidbody2D>();
     }

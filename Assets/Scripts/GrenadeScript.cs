@@ -8,9 +8,11 @@ public class GrenadeScript : MonoBehaviour {
 	private GameObject explosionPrefab;
 	[SerializeField]
 	private float radius = 3f;
+	private AudioManager audio;
 
 	// Use this for initialization
 	void Start () {
+		audio = GameObject.Find ("_AudioManager").GetComponent<AudioManager>();
 		StartCoroutine (IgnoreCharacter ());
 		StartCoroutine (Explode());
 	}
@@ -32,6 +34,7 @@ public class GrenadeScript : MonoBehaviour {
 		}
 		GameObject explosion = Instantiate(explosionPrefab,this.transform.position,Quaternion.identity) as GameObject;
 		Destroy (explosion, 0.5f);
+		audio.PlayBoom ();
 		Destroy (this.gameObject);
 
 		yield break;

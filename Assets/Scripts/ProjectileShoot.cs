@@ -14,10 +14,11 @@ public class ProjectileShoot : MonoBehaviour {
     public Transform firepoint;
 
 	private Transform transform;
-
+	private AudioManager audio;
     public Camera cam;
 	// Use this for initialization
 	void Start () {
+		audio = GameObject.Find ("_AudioManager").GetComponent<AudioManager>();
         animator = gameObject.GetComponent<Animator>();
 		transform = gameObject.transform;
 	}
@@ -27,6 +28,7 @@ public class ProjectileShoot : MonoBehaviour {
         if (Input.GetButtonDown("Fire1"))
         {
             animator.SetTrigger("fire");
+			audio.PlayGun ();
             FireProjectile();
         }
 	}
