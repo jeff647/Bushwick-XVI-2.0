@@ -22,4 +22,6 @@ public class PauseMenu : MonoBehaviour {
 				Time.timeScale = 1;
 		}
 	}
+	public bool IsActive { get; set; }
+
 }
